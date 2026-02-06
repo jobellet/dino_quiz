@@ -204,7 +204,26 @@ const HappyDinoImage = () => (
   </svg>
 );
 
-const BackgroundGenerator = ({ theme }) => {
+const BackgroundGenerator = ({ theme, isStartScreen }) => {
+  if (isStartScreen) {
+    return (
+      <div className="absolute inset-0 bg-[#4ade80] overflow-hidden -z-10 flex items-center justify-center">
+        {/* Large Leaf Watermark Right */}
+        <div className="absolute top-[10%] right-0 text-[#86efac] opacity-50 transform translate-x-1/4">
+          <Leaf size={400} strokeWidth={1} />
+        </div>
+        {/* Small Leaf Watermark Left */}
+        <div className="absolute bottom-[10%] left-0 text-[#86efac] opacity-50 transform -translate-x-1/4 -rotate-45">
+          <Leaf size={300} strokeWidth={1} />
+        </div>
+        {/* Faint Lightbulb */}
+        <div className="absolute top-1/2 left-[10%] text-yellow-200 opacity-60">
+          <Lightbulb size={60} />
+        </div>
+      </div>
+    );
+  }
+
   const renderTheme = () => {
     switch (theme) {
       case THEMES.OCEAN:
@@ -443,21 +462,21 @@ export default function DinoQuiz() {
   if (gameState === 'start') {
     return (
       <div className="min-h-screen relative overflow-hidden flex flex-col items-center justify-center p-4 font-sans text-center">
-        {/* Dynamic Jungle Background for Start */}
-        <BackgroundGenerator theme={THEMES.JUNGLE} />
+        {/* Customized Start Screen Background */}
+        <BackgroundGenerator isStartScreen={true} />
 
-        <div className="bg-white/90 backdrop-blur-md p-8 rounded-[3rem] shadow-2xl max-w-lg w-full transform transition-all hover:scale-105 border-4 border-white/50">
-          <div className="flex justify-center mb-4">
-            <Trophy size={80} className="text-yellow-500 drop-shadow-md animate-bounce-slow" />
+        <div className="bg-white p-10 rounded-[2rem] shadow-xl max-w-sm w-full relative z-10 flex flex-col items-center">
+          <div className="mb-4">
+            <Trophy size={60} className="text-yellow-500" strokeWidth={2.5} />
           </div>
-          <h1 className="text-5xl font-extrabold text-green-700 mb-6 tracking-tight drop-shadow-sm">Dino Quiz</h1>
-          <p className="text-xl text-gray-600 mb-8 font-medium">Bist du ein echter Dino-Experte?</p>
+          <h1 className="text-4xl font-extrabold text-green-700 mb-2 tracking-tight">Dino Quiz</h1>
+          <p className="text-sm text-gray-500 mb-8 font-medium">Bist du ein echter Dino-Experte?</p>
 
           <button
             onClick={handleStart}
-            className="w-full bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white text-3xl font-bold py-6 px-8 rounded-2xl shadow-[0_8px_0_rgb(21,128,61)] active:shadow-none active:translate-y-2 transition-all flex items-center justify-center gap-3"
+            className="w-full bg-[#10b981] hover:bg-[#059669] text-white text-2xl font-bold py-4 px-8 rounded-xl shadow-lg transition-all flex items-center justify-center gap-2"
           >
-            <Footprints size={32} />
+            <Footprints size={24} />
             Starten
           </button>
         </div>
@@ -569,8 +588,9 @@ export default function DinoQuiz() {
           else if (gameState === 'playing') {
             if (highlightTarget === idx) {
               // ** This is the active reading highlight **
-              btnClass = "bg-yellow-100 border-yellow-400 ring-4 ring-yellow-200 shadow-2xl z-20";
-              transformClass = "scale-105"; // Make bigger
+              // "Stick out" effect: Larger scale, lift up (-translate-y-2), vivid yellow w/ strong shadow
+              btnClass = "bg-[#fef9c3] border-yellow-400 ring-4 ring-yellow-200 shadow-[0_20px_25px_-5px_rgba(0,0,0,0.1),0_10px_10px_-5px_rgba(0,0,0,0.04)] z-50";
+              transformClass = "scale-110 -translate-y-2";
             }
           }
 
@@ -580,14 +600,19 @@ export default function DinoQuiz() {
               onClick={() => handleOptionClick(option)}
               disabled={gameState === 'feedback'}
               className={`
-                w-full text-left p-6 md:p-8 rounded-2xl text-xl md:text-2xl font-bold transition-all duration-300 border-b-4 backdrop-blur-sm
-                flex items-center gap-4
+                w-full text-left p-6 md:p-8 rounded-2xl text-xl md:text-2xl font-bold transition-all duration-300 border-b-8
+                flex items-center gap-4 relative
                 ${btnClass}
                 ${transformClass}
-                ${gameState === 'playing' && highlightTarget !== idx ? 'active:translate-y-1 active:border-b-0 shadow-lg hover:shadow-xl hover:scale-[1.01]' : 'shadow-sm'}
+                ${/* Normal hover behavior if NOT active highlight */ ''}
+                ${gameState === 'playing' && highlightTarget !== idx ? 'bg-white/90 text-gray-700 border-gray-200 shadow-lg hover:shadow-xl hover:scale-[1.02] hover:-translate-y-1 active:translate-y-1 active:border-b-0' : ''}
               `}
             >
-              <span className={`flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center text-lg font-black ${gameState === 'feedback' && option === currentQ.correct ? 'bg-green-500 text-white' : 'bg-gray-200 text-gray-500'}`}>
+              <span className={`
+                flex-shrink-0 w-12 h-12 md:w-14 md:h-14 rounded-2xl flex items-center justify-center text-xl font-black shadow-inner
+                ${gameState === 'feedback' && option === currentQ.correct ? 'bg-green-600 text-white' :
+                  (highlightTarget === idx ? 'bg-yellow-300 text-yellow-800' : 'bg-gray-100 text-gray-400')}
+              `}>
                 {String.fromCharCode(65 + idx)}
               </span>
               {option}
