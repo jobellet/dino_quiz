@@ -21,7 +21,7 @@ const QUESTION_DATA = [
     theme: THEMES.JUNGLE
   },
   {
-    question: "Welches Tier identifiziert Dana als den größten Hai, der je gelebt hat?",
+    question: "Welches Tier gilt als der größte Hai, der je gelebt hat?",
     options: ["Der Weiße Hai", "Der Mosasaurus", "Der Megalodon"],
     correct: "Der Megalodon",
     hint: "Er war viel, viel größer als jeder Hai heute.",
@@ -37,7 +37,7 @@ const QUESTION_DATA = [
     theme: THEMES.JUNGLE
   },
   {
-    question: "Welche Dinosaurier helfen Dana dabei, einen verlorenen Mops zu finden?",
+    question: "Welche Dinosaurier gelten als besonders schlau, haben gute Nasen und arbeiten im Team?",
     options: ["Ein T. Rex", "Ein Pterodactylus", "Ein Rudel Troodons"],
     correct: "Ein Rudel Troodons",
     hint: "Diese Dinos sind sehr schlau und arbeiten im Team.",
@@ -45,7 +45,7 @@ const QUESTION_DATA = [
     theme: THEMES.JUNGLE
   },
   {
-    question: "Nach welchem speziellen Merkmal sucht Dana bei einem Incisivosaurus?",
+    question: "Welches spezielle Merkmal besitzt der Incisivosaurus, das auch moderne Vögel haben?",
     options: ["Scharfe Zähne", "Große Klauen", "Federn"],
     correct: "Federn",
     hint: "Vögel haben diese auch am Körper.",
@@ -53,15 +53,15 @@ const QUESTION_DATA = [
     theme: THEMES.JUNGLE
   },
   {
-    question: "Welcher Dinosaurier war dafür verantwortlich, die Flamingo-Gartenfiguren anzugreifen?",
+    question: "Welcher sehr kleine Dinosaurier verteidigt sein Revier oft mutig gegen Eindringlinge?",
     options: ["Ein Dromaeosaurus", "Ein Velociraptor", "Ein Microraptor"],
     correct: "Ein Microraptor",
     hint: "Er ist ein sehr kleiner Dinosaurier.",
-    explanation: "Der Microraptor ist winzig und dachte wohl, die rosa Flamingos wären Eindringlinge in seinem Revier!",
+    explanation: "Der Microraptor ist winzig, aber er verteidigt sein Zuhause, auch wenn die 'Eindringlinge' viel größer sind als er!",
     theme: THEMES.JUNGLE
   },
   {
-    question: "Welches ungewöhnliche Verhalten untersucht Dana bei einem T. Rex?",
+    question: "Welches ungewöhnliche Verhalten könnte ein T. Rex gezeigt haben, um Stärke zu demonstrieren?",
     options: ["Er schwimmt", "Er fliegt", "Er tanzt"],
     correct: "Er tanzt",
     hint: "Er bewegt sich rhythmisch, fast wie bei Musik.",
@@ -69,7 +69,7 @@ const QUESTION_DATA = [
     theme: THEMES.VOLCANO
   },
   {
-    question: "Wovor hat der Brachiosaurus in Danas Geschichte Angst?",
+    question: "Wovor könnte ein Brachiosaurus aufgrund seiner enormen Größe Angst haben?",
     options: ["Angst im Dunkeln", "Lauten Geräuschen", "Höhenangst"],
     correct: "Höhenangst",
     hint: "Er mag es nicht, wenn sein Kopf so weit oben ist.",
@@ -149,7 +149,7 @@ const QUESTION_DATA = [
     theme: THEMES.JUNGLE
   },
   {
-    question: "Mit welchen modernen Tieren vergleicht Dana Dinosaurier oft?",
+    question: "Mit welchen modernen Tiergruppen sind Dinosaurier am engsten verwandt?",
     options: ["Vögel und Reptilien", "Katzen und Hunde", "Fische und Haie"],
     correct: "Vögel und Reptilien",
     hint: "Denk an Tiere, die Eier legen und Schuppen oder Federn haben.",
